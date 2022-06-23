@@ -1,0 +1,111 @@
+﻿@model TheReaLState.Models.BuyModel
+@{
+    ViewBag.Title = "Homes";
+}
+
+@helper button(string type, string value)
+        {
+    <input type="@type" value="@value" class="btn btn-primary btn-group-lg" />
+}
+<title>The ReaL Estate - Buy Homes</title>
+<h2>Homes</h2>
+@using (Html.BeginForm(FormMethod.Post))
+{
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                @Html.Label("City")
+                @Html.TextBoxFor(x => x.City, new { @class = "form-control", placeholder = "Enter City Name" })
+                @Html.ValidationMessageFor(x => x.City)
+            </div>
+            <div class="col-sm-4">
+                @Html.Label("Property Type")
+                @Html.DropDownListFor(x => x.PropertyType, new List<SelectListItem>
+            {
+                new SelectListItem() {Text="None",Value=""},
+                new SelectListItem() {Text="House",Value="House"},
+                new SelectListItem() {Text="Upper Portion",Value="Upper Portion"},
+                new SelectListItem() {Text="Farm House",Value="Farm House"},
+                new SelectListItem() {Text="Pent House",Value="Pent House"},
+                new SelectListItem() {Text="Flat",Value="Flat"},
+                new SelectListItem() {Text="Lower Portion",Value="Lower Portion"},
+                new SelectListItem() {Text="Room",Value="Room"},
+            },
+         new { @Class = "form-control", placeholder = "Enter Property Type" })
+                @Html.ValidationMessageFor(x => x.PropertyType)
+            </div>
+        </div>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseseven" aria-expanded="true" aria-controls="collapseseven">
+            <i class="glyphicon-arrow-down" aria-hidden="true" style="font-size:24px" ;></i>
+            <span>More Filters</span>
+        </a>
+        <div id="collapseseven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="form-group row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    @Html.Label("Location")
+                    @Html.TextAreaFor(x => x.Location, new { @class = "form-control", placeholder = "Enter Desired Location" })
+                    @Html.ValidationMessageFor(x => x.Location)
+                </div>
+                <div class="col-sm-4">
+                    @Html.Label("Area in Sq Yd")
+                    @Html.TextBoxFor(x => x.AreaInSqYd, null, new { @class = "form-control", placeholder = "Min:50, Max:4000" })
+                    @Html.ValidationMessageFor(x => x.AreaInSqYd)
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    @Html.Label("Min Price Range(Pkr)")
+                    @Html.TextBoxFor(x => x.MinPriceRange, new { @class = "form-control", placeholder = "Minimum Range" })
+                    @Html.ValidationMessageFor(x => x.MinPriceRange)
+                </div>
+                <div class="col-sm-4">
+                    @Html.Label("Max Price Range(Pkr)")
+                    @Html.TextBoxFor(x => x.MaxPriceRange, new { @class = "form-control", placeholder = "Maximum Range" })
+                    @Html.ValidationMessageFor(x => x.MaxPriceRange)
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    @Html.Label("BedrOomS")<br>
+                    @Html.RadioButtonFor(x => x.Bedrooms, "All")All
+                    @Html.RadioButtonFor(x => x.Bedrooms, "Studio")Studio
+                    @Html.RadioButtonFor(x => x.Bedrooms, "1")1
+                    @Html.RadioButtonFor(x => x.Bedrooms, "2")2
+                    @Html.RadioButtonFor(x => x.Bedrooms, "3")3
+                    @Html.RadioButtonFor(x => x.Bedrooms, "4")4
+                    @Html.RadioButtonFor(x => x.Bedrooms, "5")5
+                    @Html.RadioButtonFor(x => x.Bedrooms, "6+")6
+                    @Html.ValidationMessageFor(x => x.Bedrooms)
+                </div>
+                <div class="col-sm-4">
+                    @Html.Label("Includings")
+                    <div class="custom-control custom-checkbox small">
+                        @Html.CheckBoxFor(x => x.TVLounge, new { @class = "custom-control-input", id = "customCheck1" })
+                        @Html.Label("TV-Lounge", new { @class = "custom-control-label", @for = "customCheck1" })
+                    </div>
+                    <div class="custom-control custom-checkbox small">
+                        @Html.CheckBoxFor(x => x.OutsideGarden, new { @class = "custom-control-input", id = "customCheck2" })
+                        @Html.Label("Outside Garden", new { @class = "custom-control-label", @for = "customCheck2" })
+                    </div>
+                    <div class="custom-control custom-checkbox small">
+                        @Html.CheckBoxFor(x => x.WestOpen, new { @class = "custom-control-input", id = "customCheck3" })
+                        @Html.Label("West Open", new { @class = "custom-control-label", @for = "customCheck3" })
+                    </div>
+                    <div class="custom-control custom-checkbox small">
+                        @Html.CheckBoxFor(x => x.Corner, new { @class = "custom-control-input", id = "customCheck4" })
+                        @Html.Label("Corner", new { @class = "custom-control-label", @for = "customCheck4" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                @button("submit", "Find")
+                @button("reset", "Reset")
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label>@ViewBag.Mesage</label>
+            </div>
+        </div>
+}

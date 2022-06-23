@@ -1,0 +1,135 @@
+﻿@model TheReaLState.Models.AddPropertyModel
+@{
+    ViewBag.Title = "Homes";
+}
+
+<h2>Add a Property (Homes)</h2>
+<h3>*=Required Fields</h3>
+@helper button(string type, string value)
+        {
+    <input type="@type" value="@value" class="btn btn-primary btn-group-lg" />
+}
+@using (Html.BeginForm("Homes", "AddProperty", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+ <div class="text-center" style="background-color:green;color:white">PropertyType And Location</div>
+<div class="form-group row">
+    <div class="col-sm-4 mb-3 mb-sm-0"></div>
+    <div class="col-sm-4">
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-4 mb-3 mb-sm-0">Purpose:</div>
+    <div class="col-sm-4">
+        @Html.RadioButtonFor(x => x.Purpose, "ForSale")For Sale
+        @Html.RadioButtonFor(x => x.Purpose, "Rent")Rent
+        @Html.RadioButtonFor(x => x.Purpose, "Wanted")Wanted
+        @Html.ValidationMessageFor(x => x.Purpose)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-4 mb-3 mb-sm-0">PropertyType:</div>
+    <div class="col-sm-4">
+        @Html.DropDownListFor(x => x.PropertyType, new List<SelectListItem>
+            {
+                new SelectListItem() {Text="None",Value=""},
+                new SelectListItem() {Text="House",Value="House"},
+                new SelectListItem() {Text="Upper Portion",Value="Upper Portion"},
+                new SelectListItem() {Text="Farm House",Value="Farm House"},
+                new SelectListItem() {Text="Pent House",Value="Pent House"},
+                new SelectListItem() {Text="Flat",Value="Flat"},
+                new SelectListItem() {Text="Lower Portion",Value="Lower Portion"},
+                new SelectListItem() {Text="Room",Value="Room"},
+            },
+      new { @Class = "form-control", placeholder = "Enter Property Type" })
+        @Html.ValidationMessageFor(x => x.PropertyType)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-4 mb-3 mb-sm-0">City:</div>
+    <div class="col-sm-4">
+        @Html.TextBoxFor(x => x.City, new { @class = "form-control", placeholder = "Enter City Name" })
+        @Html.ValidationMessageFor(x => x.City)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-4 mb-3 mb-sm-0">Location:</div>
+    <div class="col-sm-4">
+        @Html.TextAreaFor(x => x.Location, new { @class = "form-control", placeholder = "Enter Location" })
+        @Html.ValidationMessageFor(x => x.Location)
+    </div>
+</div>
+
+<div class="text-center" style="background-color:green;color:white">Property Details</div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0"></div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">Property Title:</div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(x => x.PropertyTitle, new { @class = "form-control", placeholder = "Enter PropertyTitle" })
+            @Html.ValidationMessageFor(x => x.PropertyTitle)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">Description:</div>
+        <div class="col-sm-4">
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", placeholder = "Enter Description" })
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">All Inclusive Price:</div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control", placeholder = "Price Must Contain in numbers" })
+            @Html.ValidationMessageFor(x => x.Price)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">Area in Square Yard:</div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(x => x.LandArea, new { @class = "form-control", placeholder = "Enter AreaInSqYd" })
+            @Html.ValidationMessageFor(x => x.LandArea)
+        </div>
+    </div>
+    <div class="text-center" style="background-color:green;color:white">Add Image</div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0"></div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">Select your Image</div>
+        <div class="col-sm-4">
+            <input type="file" name="ProductImage" class="form-control" />
+        </div>
+    </div>
+    
+    <div class="text-center" style="background-color:green;color:white">Contact Details</div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0"></div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">Username:</div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(x => x.Username, new { @class = "form-control", placeholder = "Enter Username" })
+            @Html.ValidationMessageFor(x => x.Username)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">Password:</div>
+        <div class="col-sm-4">
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Enter Password" })
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+    </div>
+    <div class="form-group row">
+       
+    </div>
+    <input type="submit" value="Submit" class="btn btn-default" style="color:azure;background-color:blue;align-self:center" />
+}

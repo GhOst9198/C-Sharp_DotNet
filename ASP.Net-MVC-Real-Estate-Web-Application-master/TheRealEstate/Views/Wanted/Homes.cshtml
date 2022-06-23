@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Homes";
+}
+<title>The ReaL Estate - Wanted Homes</title>
+<h2>Homes</h2>
+<form class="user">
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("City")
+            @Html.TextBox("City", null, new { @class = "form-control", placeholder = "Enter City Name" })
+
+        </div>
+        <div class="col-sm-4">
+            @Html.Label("Location")
+            @Html.TextArea("Location", null, new { @class = "form-control", placeholder = "Enter Desired Location" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("Property Type")
+            @Html.DropDownList("Select Type Of Property", new List<SelectListItem>
+            {
+                new SelectListItem() {Text="House",Value="1"},
+                new SelectListItem() {Text="Upper Portion",Value="2"},
+                new SelectListItem() {Text="Farm House",Value="3"},
+                new SelectListItem() {Text="Pent House",Value="4"},
+                new SelectListItem() {Text="Flat",Value="5"},
+                new SelectListItem() {Text="Lower Portion",Value="6"},
+                new SelectListItem() {Text="Room",Value="7"},
+            },
+                new { @Class = "form-control" })
+        </div>
+        <div class="col-sm-4">
+            @Html.Label("Price(Pkr)")
+            @Html.DropDownList("Select Price Range", new List<SelectListItem>
+            {
+                new SelectListItem() {Text="Less Than 500,000",Value="1"},
+                new SelectListItem() {Text="500,000 to 10,00,000",Value="2"},
+                new SelectListItem() {Text="10,00,000 to 15,00,000",Value="3"},
+                new SelectListItem() {Text="15,00,000 to 20,00,000",Value="4"},
+                new SelectListItem() {Text="20,00,000 to 30,00,000",Value="5"},
+                new SelectListItem() {Text="30,00,000 to 50,00,000",Value="6"},
+                new SelectListItem() {Text="Greater than 50,00,000",Value="7"},
+            },
+                new { @Class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("Area in Sq Yd")
+            @Html.TextBox("Area in Sq Yd", null, new { @class = "form-control", placeholder = "Min:50, Max:4000" })
+        </div>
+        <div class="col-sm-4">
+            @Html.Label("Beds")</br>
+            @Html.RadioButton("Bedrooms", "All")All
+            @Html.RadioButton("Bedrooms", "Studio")Studio
+            @Html.RadioButton("Bedrooms", "1")1</br>
+            @Html.RadioButton("Bedrooms", "2")2
+            @Html.RadioButton("Bedrooms", "3")3
+            @Html.RadioButton("Bedrooms", "4")4</br>
+            @Html.RadioButton("Bedrooms", "5")5
+            @Html.RadioButton("Bedrooms", "6+")6+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("Includings")</br>
+            <div class="custom-control custom-checkbox small">
+                @Html.CheckBox("TV-Lounge", new { @class = "custom-control-input", id = "customCheck1" })
+                @Html.Label("TV-Lounge", new { @class = "custom-control-label", @for = "customCheck1" })
+            </div>
+            <div class="custom-control custom-checkbox small">
+                @Html.CheckBox("Outside Garden", new { @class = "custom-control-input", id = "customCheck2" })
+                @Html.Label("Outside Garden", new { @class = "custom-control-label", @for = "customCheck2" })
+            </div>
+            <div class="custom-control custom-checkbox small">
+                @Html.CheckBox("West Open", new { @class = "custom-control-input", id = "customCheck3" })
+                @Html.Label("West Open", new { @class = "custom-control-label", @for = "customCheck3" })
+            </div>
+            <div class="custom-control custom-checkbox small">
+                @Html.CheckBox("Corner", new { @class = "custom-control-input", id = "customCheck4" })
+                @Html.Label("Corner", new { @class = "custom-control-label", @for = "customCheck4" })
+            </div>
+        </div>
+    </div>
+
+</form>
+

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Commercial";
+}
+<title>The ReaL Estate - Wanted Commercial</title>
+<h2>Commercial</h2>
+<form class="user">
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("City")
+            @Html.TextBox("City", null, new { @class = "form-control", placeholder = "Enter City Name" })
+
+        </div>
+        <div class="col-sm-4">
+            @Html.Label("Location")
+            @Html.TextArea("Location", null, new { @class = "form-control", placeholder = "Enter Desired Location" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("Property Type")
+            @Html.DropDownList("Select Type Of Property", new List<SelectListItem>
+            {
+                new SelectListItem() {Text="Office",Value="1"},
+                new SelectListItem() {Text="Shop",Value="2"},
+                new SelectListItem() {Text="Warehouse",Value="3"},
+                new SelectListItem() {Text="Factory",Value="4"},
+                new SelectListItem() {Text="Building",Value="5"},
+                new SelectListItem() {Text="Other",Value="6"},
+            },
+                new { @Class = "form-control" })
+        </div>
+        <div class="col-sm-4">
+            @Html.Label("Price(Pkr)")
+            @Html.DropDownList("Select Price Range", new List<SelectListItem>
+            {
+                new SelectListItem() {Text="Less Than 500,000",Value="1"},
+                new SelectListItem() {Text="500,000 to 10,00,000",Value="2"},
+                new SelectListItem() {Text="10,00,000 to 15,00,000",Value="3"},
+                new SelectListItem() {Text="15,00,000 to 20,00,000",Value="4"},
+                new SelectListItem() {Text="20,00,000 to 30,00,000",Value="5"},
+                new SelectListItem() {Text="30,00,000 to 50,00,000",Value="6"},
+                new SelectListItem() {Text="Greater than %0,00,000",Value="7"},
+            },
+                new { @Class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("Area in Sq Yd")
+            @Html.TextBox("Area in Sq Yd", null, new { @class = "form-control", placeholder = "Min:50, Max:4000" })
+        </div>
+    </div>
+
+</form>
+

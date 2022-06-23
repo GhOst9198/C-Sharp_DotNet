@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Plots";
+}
+
+@helper button(string type, string value)
+        {
+    <input type="@type" value="@value" class="btn btn-primary btn-group-lg" />
+}
+<title>The ReaL Estate - Buy Plots</title>
+<h2>Plots</h2>
+<form class="user">
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("City")
+            @Html.TextBox("City", null, new { @class = "form-control", placeholder = "Enter City Name" })
+
+        </div>
+        <div class="col-sm-4">
+            @Html.Label("Location")
+            @Html.TextArea("Location", null, new { @class = "form-control", placeholder = "Enter Desired Location" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            @Html.Label("Property Type")
+            @Html.DropDownList("Select Type Of Property", new List<SelectListItem>
+            {
+                new SelectListItem() {Text="None",Value=""},
+                new SelectListItem() {Text="Residential Plot",Value="Residential Plot"},
+                new SelectListItem() {Text="Commercial Plot",Value="Commercial Plot"},
+                new SelectListItem() {Text="Agricultural land",Value="Agricultural land"},
+                new SelectListItem() {Text="Industrial Land",Value="Industrial Land"},
+                new SelectListItem() {Text="Plot File",Value="Plot File"},
+                new SelectListItem() {Text="Plot Form",Value="Plot Form"},
+            },
+                new { @Class = "form-control" })
+        </div>
+        <div class="col-sm-4">
+            @Html.Label("Area in Sq Yd")
+            @Html.TextBox("Area in Sq Yd", null, new { @class = "form-control", placeholder = "Min:50, Max:4000" })
+        </div>
+    </div>
+    <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                @Html.Label("Min Price Range(Pkr)")
+                @Html.TextBox("MinPriceRange", null, new { @class = "form-control", placeholder = "Minimum Range" })
+            </div>
+            <div class="col-sm-4">
+                @Html.Label("Max Price Range(Pkr)")
+                @Html.TextBox("MaxPriceRange", null, new { @class = "form-control", placeholder = "Maximum Range" })
+            </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4">
+            @button("submit", "Find")
+            @button("reset", "Reset")
+        </div>
+    </div>
+</form>
